@@ -1,0 +1,12 @@
+---
+- hosts: all
+  user: root
+  tasks:
+  - name: Install PgSQL database
+    apt: name=postgresql state=present
+  - name: Add something 
+    lineinfile: dest=/etc/postgresql/9.1/main/pg_hba.conf regexp="^host all all all" line="host all all all md5"
+  - name: Restart PgSQL
+    service: name=postgresql state=reloaded
+  - name: Modify config
+    template: src=../templates/config.py.j2 dest=/home/app/demo-app/config.py

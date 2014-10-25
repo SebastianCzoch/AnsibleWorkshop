@@ -1,0 +1,6 @@
+---
+- hosts: all
+  user: app
+  tasks:
+    - name: Stop gunicorn
+      shell: kill `cat hello.pid` chdir=/home/app/demo-app

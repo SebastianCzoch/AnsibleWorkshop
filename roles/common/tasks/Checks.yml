@@ -1,0 +1,6 @@
+---
+- hosts: all
+  user: app
+  tasks:
+  - name: Check gunicorn
+    uri: url=http://{{ ansible_default_ipv4.address }}:8000/

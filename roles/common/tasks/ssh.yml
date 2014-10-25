@@ -1,0 +1,6 @@
+---
+- hosts: all
+  user: root
+  tasks:
+    - authorized_key: 'user=app key="{{ item }}"'
+      with_file: ~/.ssh/id_rsa.pub

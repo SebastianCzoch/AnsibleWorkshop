@@ -1,0 +1,7 @@
+---
+- include: roles/common/tasks/basics.yml
+#- include: roles/common/tasks/app.yml
+- include: roles/common/tasks/ssh.yml
+#- include: roles/common/tasks/killGuicorn.yml
+- include: roles/common/tasks/Checks.yml
+- include: roles/common/tasks/pgsql.yml

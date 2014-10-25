@@ -1,0 +1,13 @@
+- hosts: all
+  user: root
+  sudo: true
+  sudo_user: app
+  tasks:
+    - name: Fetch git repo
+      git: repo=https://bitbucket.org/wiktor/ansible-workshop-demo-app.git dest=/home/app/demo-app
+    - name: Resolve requirements
+      pip: requirements=/home/app/demo-app/requirements.txt virtualenv=/home/app/.env
+    - name: Hello word
+      command: >
+        /home/app/.env/bin/gunicorn hello:app -p hello.pid -D -b 0.0.0.0:8000
+        chdir=/home/app/demo-app
